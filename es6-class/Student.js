@@ -10,7 +10,7 @@ class Student {
    }
 
    //属性 (实例属性| 类属性（静态属性）) 公共的东西
-   name= ""
+   name= "" //js java dart c#
 
    static tags =["xx","uuu"]
    //方法
@@ -25,10 +25,10 @@ class Student {
 
 
 let zhangsan = new Student()
-zhangsan.name = "zhangsan"
+zhangsan.name = "zhangsan" // name get set
 
 let lisi = new Student()
-lisi.name = ""
+lisi.name = "" // name get set 
 
 Student.tags
 

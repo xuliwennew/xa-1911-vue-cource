@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+</head>
+
+<body>
+
+    <div id="v1">
+        <!-- <h1>{{title}}</h1> -->
+        <ul>
+            <li>{{list[0].name}} <a>删除</a></li>
+        </ul>  
+    </div>
+
+   
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+        //view 分析视图 data methods 
+        let user = {
+            name:"张三"
+        }
+
+//开发过程中，并不是所有的值 都需要放在data，proxy->set getter observer-watcher[dirty checking] listners
+
+      // flowjs 接口 flow typescript vue3.0 = f(state) mvvm(component)
+        let vm= new Vue({
+            el:"#v1",
+            // vue的双向数据绑定是如何实现： 
+            // 把需要双向数据绑定的数据放在data
+            // vue 的compiler 会劫持data每个数据结构交给 [es6 proxy | Object.defineProperty] 动态添加setter getter 
+            // 通过setter给每个数据添加observer [dirty checking]
+            data:{ //用来放view中的数据结构 //$data proxy set observer get 
+               user:"张三", // user [observer] - >listner->update model
+               _title:"用户列表",
+               list:[
+                   {
+                       name:"张三"
+                   }
+               ]
+            },
+            methods:{ //把页面上所有交互的事件或者方法都放在methods,
+                show(){
+                   console.log("show //////")
+                },
+                hide(){
+
+                }
+            }
+        })
+
+        vm.show()
+        //只修改data,不会dirty checking->renderer
+        vm.user = "王五"
+        // vm.$forceUpdate()
+        console.log(vm.user)
+        
+    </script>
+</body>
+
+</html>

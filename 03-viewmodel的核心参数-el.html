@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+</head>
+
+<body>
+
+    <div id="v1">
+        <h1>用户列表</h1>
+        <ul>
+            <li v-for="n in users">{{n.name}}</li>
+        </ul>
+    </div>
+
+    <div id="v2">
+        <h1>这是二个view</h1>
+        {{1+1}}
+    </div>
+
+    <script src="bower_components/vue/dist/vue.js"></script>
+
+    <script>
+        // 使用vue的三步走 mvvm设计模式
+        // 1. 创建一个view 
+        // 2. 根据创建好的view ,来创建一个viewmodel
+        //viewmodel [[a model of view]] (controller(自定义的业务代码)+ 双向数据绑定/update)
+        let vm1 = new Vue({
+            el: "#v1",// 绑定view 给viewmodel vm1
+            data: {
+                users: [
+                    {
+                        name: "张三"
+                    },
+                    {
+                        name: "李四"
+                    }
+                ]
+            }
+        }); // viewmodel
+
+
+        let vm2 = new Vue(); //viewmodel
+
+        // 3. 根据view,来创建 model 分析视图-》a model (数据，方法)
+        // 静态的数据(数据结构)，动态的交互(事件，方法) z = x + y
+        let users = [
+            {
+                name: "张三"
+            },
+            {
+                name: "李四"
+            }
+        ]
+
+
+    </script>
+</body>
+
+</html>

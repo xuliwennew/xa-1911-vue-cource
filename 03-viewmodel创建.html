@@ -1,0 +1,60 @@
+<!DOCTYPE html >
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+</head>
+
+<body>
+
+    <div id="v1">
+       {{1+1}}
+       <div id="v2">
+        {{1+1}}
+       </div>
+    </div>
+
+   
+     
+    <script src="bower_components/dist/vue.js"></script>
+   
+    <script>
+
+        /**
+        * vue提供的一个公式:
+          new Vue({
+              el:"",
+              data:{}, 
+              methods:{},
+              render:()=>{}
+              template:"",
+              watch:{},
+              computed:{}
+          })
+        */
+      
+      // step2: 创建一个viewmodel {} 可选参数
+      //创建一个viewmodel的目的，处理view的数据和逻辑
+      // options的7 个核心参数:
+      // el data methods computed watch template render
+      let vm = new Vue({
+          el:document.querySelector('#v1')// 指定viewmodel的管理位置 
+      });
+      console.log(vm.$el) // readonly 只读属性
+      console.log(vm.$options)
+ 
+      //一个项目只创建一个viewmodel SPA 实例上只有一个view 
+      //vue 多页面的应用 程序 MPA 
+
+      //每个Vue实例都可以管理一个view
+      let vm2 = new Vue({
+          el:"#v2"
+      });
+    </script>
+    
+</body>
+
+</html>
