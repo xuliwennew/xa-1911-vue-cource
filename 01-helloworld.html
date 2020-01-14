@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+</head>
+<body>
+    <div id="app">
+       <h1>{{title}}</h1>
+       <input type="text" v-model="title">
+    </div>
+
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <script>
+       new Vue({
+           el:"#app",
+           data:{
+               title:"xxx"
+           }
+       })
+
+       let div = {
+           type:"div",
+           children:[
+               {
+                   type:"h1",
+                   children:[
+
+                   ]
+               }
+           ]
+       }
+
+       // compiler div-> android ios view 
+    </script>
+</body>
+</html>
