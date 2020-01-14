@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue视图的三种创建方式</title>
+</head>
+
+<body>
+
+    <div id="app">
+       <!--定义viewmodel中的视图的第一种方式-->
+       {{1+1}}
+    </div>
+ 
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+        var vm =  new Vue({
+              el:"#app",
+              data:{
+                  title:"hello world"
+              },
+              // template string -> js node vndoe
+              // templete - Vue.compile(str)->render->vnode->[diff]->real dom
+              template:` 
+                <div>
+                    <h1>{{title}}</h1>
+                    <h1>hello world</h1>
+                </div>
+              ` ,
+              //直接创建vnode tree template string - compile- vnode 
+              //render 方法只用在根组件的render
+              // copy react render 
+              render(createElement){
+                  // template 来写vnode 
+                  // react jsx 
+                 return createElement("div",{},[
+                     createElement("h1",{},"hello 2"),
+                     createElement("h2",{},"world2")
+                 ]) // vnode tree
+              }
+          })
+
+          //生成一个vnode 
+          let vnodeTree = vm.$createElement("li")
+
+// ast 
+          let vnodeDemo = {
+              tag:"h1",
+              children:[
+                  {
+                      tag:"span",
+                      children:[
+
+                      ]
+                  }
+              ]
+          }
+          console.log(vnodeTree)
+          // create dom
+          let li = document.createElement("li")
+
+    </script>
+</body>
+
+</html>

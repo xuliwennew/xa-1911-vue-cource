@@ -13,7 +13,7 @@
     <div id="v1">
         <!-- <h1>{{title}}</h1> -->
         <ul>
-            <li>{{list[0].name}} <a>删除</a></li>
+            <li>{{user}} <a>删除</a></li>
         </ul>  
     </div>
 
@@ -47,6 +47,8 @@
             },
             methods:{ //把页面上所有交互的事件或者方法都放在methods,
                 show(){
+                    //dirty checking
+                    this.user ="赵6"
                    console.log("show //////")
                 },
                 hide(){
@@ -57,8 +59,9 @@
 
         vm.show()
         //只修改data,不会dirty checking->renderer
-        vm.user = "王五"
-        // vm.$forceUpdate()
+        // vm.user = "王五"
+        // //强制更新view react 
+        //  vm.$forceUpdate()
         console.log(vm.user)
         
     </script>

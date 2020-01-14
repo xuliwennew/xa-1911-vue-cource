@@ -18,19 +18,14 @@
     <script src="bower_components/dist/vue.js"></script>
 
     <script>
-          new Vue({
-              el:"#app",
-              data:{
-                  title:"hello world"
-              },
-              // template string -> js node vndoe
-              template:` 
-                <div>
-                    <h1>{{title}}</h1>
-                    <h1>hello world</h1>
-                </div>
-              `, 
-          })
+        //vue.compile template->render
+        let renderFn = Vue.compile("<h1>hello out template</h1>")
+
+        new Vue({
+            el:"#app",
+            render:renderFn.render,
+            staticRenderFns: renderFn.staticRenderFns
+        })
 
     </script>
 </body>
