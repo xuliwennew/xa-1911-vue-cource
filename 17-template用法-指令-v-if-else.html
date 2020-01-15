@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        查询： <input type="text" v-model.trim.lazy="cource">
+        <ul>
+            <li v-if="cource == 'vue'">
+                <h1>Vue介绍</h1>
+                <p>adfadfasdfasdfasdf</p>
+            </li>
+            <li v-else-if="cource == 'angular'">
+                <h1>Angular介绍</h1>
+                <p>adfadfasdfasdfasdf</p>
+            </li>
+            <li v-else>
+                <h1>React介绍</h1>
+                <p>adfadfasdfasdfasdf</p>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+        //dom 状态由 data中的数据状态来决定
+        //v-if="true|false" display:block none
+        new Vue({
+            el: "#app",
+            data: {
+                cource:""
+            }
+        })
+
+    </script>
+</body>
+
+</html>

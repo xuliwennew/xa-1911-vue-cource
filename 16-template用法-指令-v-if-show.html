@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <a @click="show = !show">toggle</a>
+        <div v-show="show" style="width:300px;height:300px;border:1px solid red"></div>
+        
+    
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+        //dom 状态由 data中的数据状态来决定
+        //v-if="true|false" display:block none
+       new Vue({
+           el:"#app",
+           data:{
+               show:true
+           } 
+       })
+       
+    </script>
+</body>
+
+</html>

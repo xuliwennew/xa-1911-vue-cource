@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        {{"hello"}}
+         <h1 v-ft="red">hello world</h1>
+         <h1 v-ft="green">hello world</h1>
+         <h1 v-ft="'blue'">hello world</h1>
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+         //自定义指令 directive 全局定义 局部
+         //el 指向ft所在dom bindig
+         Vue.directive("ft",(el,binding)=>{
+            console.log(el)
+            console.log(binding.value)
+            el.style.color = binding.value
+         })
+
+         new Vue({
+             el:"#app",
+             data:{
+                 red:"red",
+                 green:"green"
+             }
+         })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>用户列表</h1>
+        <ul>
+            <li v-for="(u,i) in users">
+                <h1>{{i}}:{{u.name}}</h1>
+                <ul>
+                    <li v-for="(h,j) in u.hobby">
+                        {{u.name}} {{j}}: {{h}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+     
+       new Vue({
+           el:"#app",
+           data:{
+               users:[
+                   {
+                       name:"张三",
+                       hobby:["coding","sleep"]
+                   },
+                   {
+                       name:"李四",
+                       hobby:["coding","eat"]
+                   }
+               ]
+           }
+       })
+
+    </script>
+</body>
+
+</html>

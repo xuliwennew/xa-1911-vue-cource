@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        .box {
+            width:200px;height:500px;
+            background-color: grey;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="box" v-drag="'green'"></div>
+        <div class="box" v-drag="'red'"></div>
+        <div class="box" v-drag="'blue'"></div>
+        <div class="box" v-drag="'yellow'"></div>
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+        Vue.directive("drag",(el,binding)=>{
+            el.onmousedown = function(e){
+
+                 el.style.position="absolute"
+                 el.style.border = "1px dashed green"
+                 el.style.backgroundColor = binding.value
+                
+                 let sx = e.clientX - el.offsetLeft
+                 let sy = e.clientY - el.offsetTop
+   
+                document.onmousemove = function(e){
+                   let left = e.clientX - sx +"px"
+                   let top = e.clientY - sy + "px"
+                   el.style.left = left
+                   el.style.top = top
+                }
+
+                el.onmouseup = function(){
+                    document.onmousemove = null
+                    el.onmouseup = null
+                }
+            }
+        })
+
+        new Vue({
+            el:"#app"
+        })
+          
+    </script>
+</body>
+
+</html>

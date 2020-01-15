@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>注册用户</h1>
+        用户名: <input type="text" v-model="userInfo.name">
+        <hr>
+        密码: <input type="password" v-model="userInfo.pwd">
+        <hr>
+        性别: 男 <input v-model="userInfo.sex" type="radio" value="male" name="sex"> 女 <input name="sex"
+            v-model="userInfo.sex" value="female" type="radio">
+        <hr>
+        爱好: coding: <input type="checkbox" value="coding" v-model="userInfo.hobby"> 看电影: <input type="checkbox"
+            value="movie" v-model="userInfo.hobby">
+        <hr>
+        住址: <select v-model="userInfo.addr.p">
+            <option :value="p" v-for="p in cityData">{{p.province}}</option>
+        </select> 省
+        <select v-model="userInfo.addr.c">
+            <option :value="c" v-for="c in userInfo.addr.p.cities">{{c.city}}</option>
+        </select> 市
+        <select v-model="userInfo.addr.a">
+            <option :value="a" v-for="a in userInfo.addr.c.areas">{{a.area}}</option>
+        </select> 区
+        <hr>
+        介绍:<textarea cols="100" rows="10" v-model="userInfo.profile"></textarea>
+        <hr>
+
+        <button @click="regUser">注册</button>
+        <hr>
+        {{userInfo}}
+        <hr>
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+        //根据表单，创建一个表单数据对象
+        new Vue({
+            el: "#app",
+            data: {
+                // 数据驱动
+                userInfo: {
+                    name: "名称",
+                    pwd: "",
+                    sex: "female",
+                    hobby: [],
+                    addr: {
+                        p: "",
+                        c: "",
+                        a: ""
+                    },
+                    profile: ""
+                },
+                cityData: [
+                    {
+                        province: "陕西省",
+                        cities: [
+                            {
+                                city: "西安",
+                                areas: [
+                                    {
+                                        area: "雁塔"
+                                    },
+                                    {
+                                        area: "长安"
+                                    }
+                                ]
+
+                            },
+                            {
+                                city: "咸阳",
+                                areas: [
+                                    {
+                                        area: "秦都区"
+                                    },
+                                    {
+                                        area: "渭城区"
+                                    }
+                                ]
+
+                            }
+                        ]
+                    },
+                    {
+                        province: "山西省",
+                        cities: [
+                            {
+                                city: "太原",
+                                areas: [
+                                    {
+                                        area: "太原区1"
+                                    },
+                                    {
+                                        area: "太原区2"
+                                    }
+                                ]
+
+                            },
+                            {
+                                city: "运城",
+                                areas: [
+                                    {
+                                        area: "运城区1"
+                                    },
+                                    {
+                                        area: "运城区2"
+                                    }
+                                ]
+
+                            }
+                        ]
+                    }
+                ]
+            },
+            methods: {
+                regUser() {
+                    console.log(this.userInfo)
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
