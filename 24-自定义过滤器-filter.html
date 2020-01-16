@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 500px;
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        {{ 10000 | dolar }}
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+        Vue.filter("dolar",(data)=>{
+            console.log(data)
+            return data / 6.0
+        })
+
+        new Vue({
+            el:"#app",
+            data:{
+
+            },
+            computed:{
+
+            },
+            methods:{
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

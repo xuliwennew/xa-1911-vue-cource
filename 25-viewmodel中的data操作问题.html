@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        .sel {
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model="title">
+        <a @click="add">添加</a> | <a @click="update">修改</a> |  <a @click="del">删除</a>
+        <hr>
+        <!-- <h1>{{num}}</h1> -->
+        <ul>
+            <li :class="{sel:selId==i}" v-for="(h,i) in hobby" @click="sel(i)">{{h}}</li>
+        </ul>
+
+        <hr>
+         <h1>{{user.name}}</h1>
+         <h2>{{user.age}}</h2>
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+         
+
+        new Vue({
+            el:"#app",
+            data:{
+               num:0,
+               title:"",
+               selId:0,
+               hobby:["编程","看电影"],
+               user:{
+                   name:"张三",
+                   age:20
+               }
+            },
+            computed:{
+
+            },
+            methods:{
+               add(){
+                  this.hobby.push(this.title) 
+               },
+               update(){
+                   //dirty checking
+                  //this.hobby[this.selId] =this.title
+                //   this.$forceUpdate()
+                  this.$set(this.hobby,this.selId,this.title)
+                  console.log(this.hobby)
+               },
+               sel(i){
+                  this.selId = i
+               },
+               del(){
+                   // splice
+                //    this.hobby.splice(this.selId,1)
+                this.$delete(this.user,"age")
+               }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

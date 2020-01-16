@@ -30,7 +30,6 @@
         new Vue({
             el: "#app",
             data: {
-
                 user: [
                     {
                         name: "张三",
@@ -41,14 +40,13 @@
                         pic: "http://t9.baidu.com/it/u=1761131378,1355750940&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1579748646&t=3e3d4feb4cd8e78008b4d52aa60762f2"
                     }
                 ]
-
             },
             watch: {
-                user:{
-                    handler(n,o){
-                       console.log("sssss")
+                user: {
+                    handler(n, o) {
+                        console.log("sssss")
                     },
-                    deep:true
+                    deep: true
                 }
             }
         })
