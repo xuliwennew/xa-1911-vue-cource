@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        .box {
+            width:200px;height:500px;
+            background-color: grey;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+         <h1>2020工资计算器</h1>
+         合同工资: <input type="number" v-model="taxSalary" > 
+         <hr>
+         各项社会保险费: <input type="number" v-model="insuranceFee" > 
+         <hr>
+         上缴个人税： <span style="color:red">{{taxMoney}}</span> 
+         <hr>
+         实际收入: <span style="color:red;font-size: 30;">{{realSalary}}</span> 
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+         /**
+          算法
+         * 上缴个人所得税：
+           要交税的一部份 taxNum = taxSalary - baseTaxMoney - insuranceFee
+           个人所得税税率表2020 36000 3% 
+           taxMoney = taxNum *0.03 - taxRate(0)
+
+           实际收入是多少:
+           realSalary = taxSalary - insuranceFee - taxMoney
+         */
+
+         //
+         new Vue({
+             el:"#app",
+             data:{
+                 //税前的工资
+                 taxSalary:0,
+                 //5险一金
+                 insuranceFee:0,
+                 //基本纳税工资
+                 baseTaxMoney:5000
+             },
+             methods:{},
+             computed:{
+                 //应交积的钱，交国家钱
+                 taxMoney(){
+                   let taxNum = this.taxSalary - this.baseTaxMoney - this.insuranceFee
+                   let taxPerRate = 0.03
+                   let taxRate = 0
+                 
+                   return (taxNum * taxPerRate) - taxRate
+                 },
+                 //实际到上钱
+                 realSalary(){
+                    return this.taxSalary - this.insuranceFee - this.taxMoney
+                 }
+             }
+         })
+          
+    </script>
+</body>
+
+</html>

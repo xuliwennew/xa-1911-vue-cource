@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        .box {
+            width:200px;height:500px;
+            background-color: grey;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="number" v-model="salary">
+        {{ formatSalary }}
+        {{ formatSalary }}
+        {{ formatSalary }}
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+        //同一个代码，只定义一次，反复使用
+        // {{}} 输出数据
+        new Vue({
+            el:"#app",
+            data:{
+                salary:30000 // number 30000RMB $30000
+            },
+            methods:{
+                
+            },
+            computed: {
+                //计算属性 data的 setter getters 缓存机制
+                formatSalary(){
+                    // salary getter 
+                    return this.salary / 6.2
+                }
+            },
+        })
+          
+    </script>
+</body>
+
+</html>

@@ -12,6 +12,14 @@ class Student {
    //属性 (实例属性| 类属性（静态属性）) 公共的东西
    name= "" //js java dart c#
 
+   set name(){
+       this.name = ""
+   }
+
+   get name(){
+       return this.name
+   }
+
    static tags =["xx","uuu"]
    //方法
    learn(){

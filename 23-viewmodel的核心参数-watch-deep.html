@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 500px;
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model="user[0].name">
+
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+        new Vue({
+            el: "#app",
+            data: {
+
+                user: [
+                    {
+                        name: "张三",
+                        pic: "http://t8.baidu.com/it/u=3571592872,3353494284&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1579748646&t=ed37ca5b32c82ed32eae467f9385b532"
+                    },
+                    {
+                        name: "李四",
+                        pic: "http://t9.baidu.com/it/u=1761131378,1355750940&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1579748646&t=3e3d4feb4cd8e78008b4d52aa60762f2"
+                    }
+                ]
+
+            },
+            watch: {
+                user:{
+                    handler(n,o){
+                       console.log("sssss")
+                    },
+                    deep:true
+                }
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>
