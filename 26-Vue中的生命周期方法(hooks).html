@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        .sel {
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+         <button @click="update">+</button>
+         <h1>{{num}}</h1>
+         <button @click="destroy">销毁实例</button>
+    </div>
+
+
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+         var vm= new Vue({
+             data:{
+                 num:0
+             },
+             methods:{
+                 update(){
+                     this.num++
+                 },
+                 destroy(){
+                     this.$destroy()
+                 }
+             },
+             beforeCreate(){
+                 console.log("#1 beforeCreate:" + this.num)
+             },
+             created(){
+                 console.log("#2 created:"+this.num)
+             },
+             beforeMount(){
+                 console.log("#3 beforeMount")
+             },
+             mounted(){
+                 console.log(document.querySelector("button"))
+                 console.log("#4 mounted")
+             },
+             beforeUpdate(){
+                 console.log("#5 beforeUpdate")
+             },
+             updated(){
+                 // this.num++ 
+                 this.num =2// 不能操作数据更新
+                 console.log("#6 updated")
+             },
+             beforeDestroy(){
+                 console.log("#7 beforeDestroy")
+             },
+             destroyed(){
+                 console.log("#8 destroyed")
+             }
+         })
+
+         vm.$mount("#app")
+
+    </script>
+</body>
+
+</html>

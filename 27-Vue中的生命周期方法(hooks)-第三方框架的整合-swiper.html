@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <link rel="stylesheet" href="bower_components/swiper//package/css/swiper.css">
+    <style>
+        .sel {
+            background-color: grey;
+        }
+
+        .swiper-conatiner,
+        .swiper-wrapper {
+            width:100%;
+            height: 300px;
+        }
+
+        .box1 {
+            width: 100%;
+            height: 300px;
+            background-color: red;
+        }
+
+        .box2 {
+            width: 100%;
+            height: 300px;
+            background-color: green;
+        }
+
+        .box3 {
+            width: 100%;
+            height: 300px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box1">Slide 1</div>
+                <div class="swiper-slide box2">Slide 2</div>
+                <div class="swiper-slide box3">Slide 3</div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <script src="bower_components/swiper/package/js/swiper.js"></script>
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+
+
+        //通过vue整合swiper
+        new Vue({
+            el: "#app",
+            mounted() {
+                var swiper = new Swiper(".swiper-container", {
+                    direction: "horizontal",
+                    effect:"flip",
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                })
+            },
+        })
+
+
+    </script>
+</body>
+
+</html>

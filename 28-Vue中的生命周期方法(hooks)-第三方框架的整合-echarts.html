@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <div id="main" style="width: 600px;height:400px;"></div>
+    </div>
+
+    <script src="assets/echarts/echarts.js"></script>
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+
+
+        //通过vue整合swiper
+        new Vue({
+            el: "#app",
+            data:{
+               options:{
+                        title: {
+                            text: 'ECharts 入门示例'
+                        },
+                        tooltip: {},
+                        legend: {
+                            data: ['销量']
+                        },
+                        xAxis: {
+                            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: '销量',
+                            type: 'bar',
+                            data: [5, 20, 36, 10, 10, 20]
+                        }]
+                    }
+            },
+            mounted() {
+               this._initCharts()
+            },
+            methods: {
+                _initCharts() {
+                    var myChart = echarts.init(document.getElementById('main'));
+                    // 指定图表的配置项和数据
+                    var option = this.options;
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

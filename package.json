@@ -1,0 +1,24 @@
+{
+  "name": "xa-vue-1911",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuliwennew/xa-1911-vue-cource.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xuliwennew/xa-1911-vue-cource/issues"
+  },
+  "homepage": "https://github.com/xuliwennew/xa-1911-vue-cource#readme",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "echarts": "^4.6.0"
+  }
+}

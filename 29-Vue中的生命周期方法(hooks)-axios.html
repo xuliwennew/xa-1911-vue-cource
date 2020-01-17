@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style>
+        .sel {
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+         <h1>{{title}}</h1>
+    </div>
+
+
+    <script src="node_modules/axios/dist/axios.js"></script>
+    <script src="bower_components/dist/vue.js"></script>
+
+    <script>
+
+       // vue 实例整合axios数据 axios : xmlhttprequest fetch
+          new Vue({
+              el:"#app",
+              data:{
+                  title:""
+              },
+              created(){
+                 this._initPage()
+              },
+              methods:{
+                  _initPage(){
+                    axios("mocks/data.json").then(res=>{
+                     console.log(res.data)
+                     this.title = res.data[0].title
+                    })
+                  }
+              }
+          })
+        
+    </script>
+</body>
+
+</html>
