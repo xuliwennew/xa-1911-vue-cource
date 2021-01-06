@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/xuliwennew/xa-1911-vue-cource#readme",
   "dependencies": {
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "echarts": "^4.6.0"
   }
 }
